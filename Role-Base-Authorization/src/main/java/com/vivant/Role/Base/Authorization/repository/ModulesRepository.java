@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ModulesRepository extends JpaRepository<Modules,Integer>
 {
+
+    Modules findByModulename(String name);
 }

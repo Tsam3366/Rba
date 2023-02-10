@@ -22,8 +22,8 @@ public class Actions
     @Column(unique = true)
     private String name;
     private String description;
-    private Date created;
-    private Date updated;
+    private Date created=new Date(System.currentTimeMillis());
+    private Date updated=null;
     @OneToMany(mappedBy = "actions", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<ModuleActions> actions = new HashSet<>();
 }

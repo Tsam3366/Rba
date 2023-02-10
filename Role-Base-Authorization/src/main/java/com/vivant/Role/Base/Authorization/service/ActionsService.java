@@ -20,4 +20,8 @@ public class ActionsService
     {
         return actionsRepository.findAll();
     }
+    public Actions getAction(String name)
+    {
+        return actionsRepository.findByName(name);
+    }
 }

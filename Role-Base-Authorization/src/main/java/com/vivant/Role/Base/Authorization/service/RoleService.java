@@ -20,6 +20,16 @@ public class RoleService
     {
         return roleRepository.save(role);
     }
+    public Set<String> rolesName()
+    {
+        List<Role> roles=roleRepository.findAll();
+        Set<String> roleNames=new HashSet<>();
+        for(Role r:roles)
+        {
+            roleNames.add(r.getName());
+        }
+        return roleNames;
+    }
     public Role findByName(String name)
     {return roleRepository.findByName(name);}
     public Set<Role> findRoles(User user)

@@ -19,9 +19,9 @@ public class ModuleActions
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private boolean status;
-    private Date created;
-    private Date updated;
+    private boolean status=true;
+    private Date created=new Date(System.currentTimeMillis());
+    private Date updated=null;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "action_id")
     private Actions actions;

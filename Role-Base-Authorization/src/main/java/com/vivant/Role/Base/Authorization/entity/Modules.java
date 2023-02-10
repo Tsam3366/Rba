@@ -19,11 +19,10 @@ public class Modules
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(unique = true)
-    private String name;
-    private boolean status;
-    private Date created;
-    private Date updated;
+    private String modulename;
+    private boolean status=true;
+    private Date created=new Date(System.currentTimeMillis());
+    private Date updated=null;
     @OneToMany(mappedBy = "modules", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<ModuleActions> modules = new HashSet<>();
+    private Set<ModuleActions> modulesActions = new HashSet<>();
 }
