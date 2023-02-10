@@ -24,4 +24,9 @@ public class ActionsService
     {
         return actionsRepository.findByName(name);
     }
+    public String getActionName(int actionId)
+    {
+        Actions act=actionsRepository.findById(actionId);
+        return act.getName();
+    }
 }

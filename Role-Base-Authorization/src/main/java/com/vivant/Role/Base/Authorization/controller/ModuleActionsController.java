@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/moduleactions")
 public class ModuleActionsController
@@ -31,5 +33,9 @@ public class ModuleActionsController
         moduleActions.setModules(m);
         return ResponseEntity.ok(moduleActionsService.save(moduleActions));
     }
-
+    @GetMapping("/{mid}")
+    public List<String> getActions(@PathVariable int mid)
+    {
+        return moduleActionsService.getActionIdList(mid);
+    }
 }
