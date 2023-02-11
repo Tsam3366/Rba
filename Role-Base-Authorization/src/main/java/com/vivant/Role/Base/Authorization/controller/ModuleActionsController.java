@@ -37,6 +37,7 @@ public class ModuleActionsController
     public List<String> getActions(@PathVariable String mname)
     {
         int mid=modulesService.getModule(mname).getId();
+        System.out.println(mid);
         return moduleActionsService.getActionIdList(mid);
     }
 }

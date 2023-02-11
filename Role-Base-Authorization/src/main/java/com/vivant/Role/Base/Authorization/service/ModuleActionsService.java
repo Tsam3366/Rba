@@ -26,8 +26,13 @@ public class ModuleActionsService
         return moduleActionsRepo.save(moduleActions);
     }
     public List<String> getActionIdList(int moduleId){
-        List<Integer> actiondIds= moduleActionsRepo.ids(moduleId);
-        System.out.println(actiondIds.toString());
+        List<ModuleActions> moduleActions= moduleActionsRepo.ids(moduleId);
+        List<Integer> actiondIds=new ArrayList<>();
+        for(ModuleActions ma:moduleActions)
+        {
+            actiondIds.add(ma.getActions().getId());
+        }
+        System.out.println("HEllo"+actiondIds.toString());
         List<String> actionNames=new ArrayList<>();
         for(int a:actiondIds)
         {

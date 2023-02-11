@@ -9,5 +9,6 @@ import java.util.List;
 public interface ModuleActionsRepo extends JpaRepository<ModuleActions,Integer>
 {
     @Query(value = "select * from moduleactions where module_id=:id",nativeQuery = true)
-    List<Integer> ids(int id);
+    List<ModuleActions> ids(int id);
+    ModuleActions findById(int id);
 }
