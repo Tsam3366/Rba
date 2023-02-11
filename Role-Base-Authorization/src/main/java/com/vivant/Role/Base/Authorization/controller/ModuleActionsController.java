@@ -33,9 +33,10 @@ public class ModuleActionsController
         moduleActions.setModules(m);
         return ResponseEntity.ok(moduleActionsService.save(moduleActions));
     }
-    @GetMapping("/{mid}")
-    public List<String> getActions(@PathVariable int mid)
+    @GetMapping("/{mname}")
+    public List<String> getActions(@PathVariable String mname)
     {
+        int mid=modulesService.getModule(mname).getId();
         return moduleActionsService.getActionIdList(mid);
     }
 }

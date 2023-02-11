@@ -7,4 +7,5 @@ public interface ModulesRepository extends JpaRepository<Modules,Integer>
 {
 
     Modules findByModulename(String name);
+
 }
