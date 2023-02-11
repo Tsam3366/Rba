@@ -3,7 +3,6 @@ package com.vivant.Role.Base.Authorization.controller;
 import com.vivant.Role.Base.Authorization.entity.Actions;
 import com.vivant.Role.Base.Authorization.entity.ModuleActions;
 import com.vivant.Role.Base.Authorization.entity.Modules;
-import com.vivant.Role.Base.Authorization.repository.ModulesRepository;
 import com.vivant.Role.Base.Authorization.service.ActionsService;
 import com.vivant.Role.Base.Authorization.service.ModuleActionsService;
 import com.vivant.Role.Base.Authorization.service.ModulesService;
@@ -25,8 +24,9 @@ public class ModuleActionsController
     private ActionsService actionsService;
 
     @PostMapping("/assignmodule/{module}/{action}")
-    public ResponseEntity<ModuleActions> assignmodule(@RequestBody ModuleActions moduleActions, @PathVariable String module, @PathVariable String action)
+    public ResponseEntity<ModuleActions> assignmodule(@PathVariable String module, @PathVariable String action)
     {
+        ModuleActions moduleActions=new ModuleActions();
         Modules m=modulesService.getModule(module);
         Actions a=actionsService.getAction(action);
         moduleActions.setActions(a);
