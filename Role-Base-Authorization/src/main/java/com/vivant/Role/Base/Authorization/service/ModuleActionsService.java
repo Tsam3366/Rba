@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ModuleActionsService
@@ -25,19 +27,20 @@ public class ModuleActionsService
     {
         return moduleActionsRepo.save(moduleActions);
     }
-    public List<String> getActionIdList(int moduleId){
-        List<ModuleActions> moduleActions= moduleActionsRepo.ids(moduleId);
-        List<Integer> actiondIds=new ArrayList<>();
+    public Set<Actions> getActionIdList(int moduleId){
+        Set<ModuleActions> moduleActions= moduleActionsRepo.ids(moduleId);
+        Set<Integer> actionIds=new HashSet<>();
         for(ModuleActions ma:moduleActions)
         {
-            actiondIds.add(ma.getActions().getId());
+            actionIds.add(ma.getActions().getId());
         }
-        List<String> actionNames=new ArrayList<>();
-        for(int a:actiondIds)
+        Set<Actions> actionNames=new HashSet<>();
+        for(int a:actionIds)
         {
             Actions act=actionsRepository.findById(a);
-            actionNames.add(act.getName());
+            actionNames.add(act);
         }
+        System.out.println(actionNames.toString());
         return actionNames;
     }
 }

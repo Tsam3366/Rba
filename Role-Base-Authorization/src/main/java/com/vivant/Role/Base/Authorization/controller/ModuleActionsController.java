@@ -6,11 +6,13 @@ import com.vivant.Role.Base.Authorization.entity.Modules;
 import com.vivant.Role.Base.Authorization.service.ActionsService;
 import com.vivant.Role.Base.Authorization.service.ModuleActionsService;
 import com.vivant.Role.Base.Authorization.service.ModulesService;
+import jakarta.persistence.SecondaryTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/moduleactions")
@@ -34,7 +36,7 @@ public class ModuleActionsController
         return ResponseEntity.ok(moduleActionsService.save(moduleActions));
     }
     @GetMapping("/{mname}")
-    public List<String> getActions(@PathVariable String mname)
+    public Set<Actions> getActions(@PathVariable String mname)
     {
         int mid=modulesService.getModule(mname).getId();
         System.out.println(mid);

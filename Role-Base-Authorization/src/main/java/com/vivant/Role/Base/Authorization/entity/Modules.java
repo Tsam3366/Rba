@@ -23,6 +23,6 @@ public class Modules
     private boolean status=true;
     private Date created=new Date(System.currentTimeMillis());
     private Date updated=null;
-    @OneToMany(mappedBy = "modules", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "modules", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ModuleActions> modulesActions = new HashSet<>();
 }

@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ModuleActionsRepo extends JpaRepository<ModuleActions,Integer>
 {
     @Query(value = "select * from moduleactions where module_id=:id",nativeQuery = true)
-    List<ModuleActions> ids(int id);
+    Set<ModuleActions> ids(int id);
     ModuleActions findById(int id);
 }

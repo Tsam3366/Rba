@@ -24,6 +24,6 @@ public class Actions
     private String description;
     private Date created=new Date(System.currentTimeMillis());
     private Date updated=null;
-    @OneToMany(mappedBy = "actions", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "actions", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ModuleActions> actions = new HashSet<>();
 }

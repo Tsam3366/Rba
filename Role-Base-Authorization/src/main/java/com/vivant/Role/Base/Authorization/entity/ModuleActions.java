@@ -22,12 +22,12 @@ public class ModuleActions
     private boolean status=true;
     private Date created=new Date(System.currentTimeMillis());
     private Date updated=null;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "action_id")
     private Actions actions;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="module_id")
     private Modules modules;
-    @OneToMany(mappedBy = "moduleActions", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "moduleActions", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Permissions> permissions = new HashSet<>();
 }
