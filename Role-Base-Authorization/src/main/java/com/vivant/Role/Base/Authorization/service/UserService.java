@@ -31,11 +31,11 @@ public class UserService {
         return userRepository.findByEmail(mail);
     }
 
-    public Set<Role> listRoles(String mail) {
+    public List<Role> listRoles(String mail) {
         return userRepository.findByEmail(mail).getRoles();
     }
 
-    public Set<User> findUsers(Role role) {
+    public List<User> findUsers(Role role) {
         return userRepository.findByRoles(role);
     }
     public List<UserRolesDto> getUsers()

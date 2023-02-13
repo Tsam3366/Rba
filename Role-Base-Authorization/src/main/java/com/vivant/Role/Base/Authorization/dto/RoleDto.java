@@ -14,6 +14,4 @@ import java.sql.Date;
 public class RoleDto
 {
     private String name;
-    private Date created;
-    private Date updated;
 }

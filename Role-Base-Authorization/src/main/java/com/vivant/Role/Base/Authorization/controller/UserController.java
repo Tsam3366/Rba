@@ -68,7 +68,7 @@ public class UserController {
     }
 
     @GetMapping("/{rolename}")
-    public Set<User> getRolesByUser(@PathVariable String rolename)
+    public List<User> getRolesByUser(@PathVariable String rolename)
     {
         Role role=roleService.findByName(rolename);
         if(role==null)

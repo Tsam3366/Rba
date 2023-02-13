@@ -28,9 +28,8 @@ public class Role
     private boolean status;
     private Date created;
     private Date updated;
-    @ManyToMany(fetch = FetchType.LAZY,
-            mappedBy = "roles")
-    private Set<User> users = new HashSet<>();
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users = new ArrayList<>();
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Permissions> permissions = new HashSet<>();
