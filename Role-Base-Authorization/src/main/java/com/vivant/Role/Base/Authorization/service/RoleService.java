@@ -20,6 +20,10 @@ public class RoleService
     {
         return roleRepository.save(role);
     }
+    public List<Role> getRoles()
+    {
+        return roleRepository.findAll();
+    }
     public Set<String> rolesName()
     {
         List<Role> roles=roleRepository.findAll();

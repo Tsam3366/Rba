@@ -32,7 +32,6 @@ public class ModuleActionsService
         {
             actiondIds.add(ma.getActions().getId());
         }
-        System.out.println("HEllo"+actiondIds.toString());
         List<String> actionNames=new ArrayList<>();
         for(int a:actiondIds)
         {

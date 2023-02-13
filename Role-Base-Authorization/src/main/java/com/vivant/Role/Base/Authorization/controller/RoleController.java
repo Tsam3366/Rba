@@ -1,6 +1,7 @@
 package com.vivant.Role.Base.Authorization.controller;
 
 import com.vivant.Role.Base.Authorization.dto.RoleDto;
+import com.vivant.Role.Base.Authorization.dto.UserRolesDto;
 import com.vivant.Role.Base.Authorization.entity.Role;
 import com.vivant.Role.Base.Authorization.entity.User;
 import com.vivant.Role.Base.Authorization.exceptions.NotFoundException;
@@ -8,6 +9,7 @@ import com.vivant.Role.Base.Authorization.repository.RoleRepository;
 import com.vivant.Role.Base.Authorization.service.RoleService;
 import com.vivant.Role.Base.Authorization.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,10 @@ public class RoleController
     @Autowired
     private UserService userService;
 
+    @GetMapping("/getall")
+    public ResponseEntity<List<Role>> getAllRoles() {
+        return ResponseEntity.ok(roleService.getRoles());
+    }
     @PostMapping("/addrole")
     public Role addRole(@RequestBody RoleDto roledto)
     {
