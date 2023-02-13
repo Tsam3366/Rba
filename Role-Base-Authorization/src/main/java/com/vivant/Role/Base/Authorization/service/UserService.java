@@ -23,27 +23,27 @@ public class UserService {
     private RoleRepository roleRepository;
 
     public User addUser(User user) {
-
-        return userRepository.save(user);
+        userRepository.save(user);
+        return user;
     }
 
     public User findUserByMail(String mail) {
         return userRepository.findByEmail(mail);
     }
 
-    public List<Role> listRoles(String mail) {
+    public Set<Role> listRoles(String mail) {
         return userRepository.findByEmail(mail).getRoles();
     }
 
-    public List<User> findUsers(Role role) {
+    public Set<User> findUsers(Role role) {
         return userRepository.findByRoles(role);
     }
-    public List<UserRolesDto> getUsers()
+    public Set<UserRolesDto> getUsers()
     {
         List<User> user=userRepository.findAll();
-        List<UserRolesDto> userRolesDtos=new ArrayList<>();
+        Set<UserRolesDto> userRolesDtos=new HashSet<>();
         for(User u:user){
-            Set<String> roleNames=new HashSet<>();
+            List<String> roleNames=new ArrayList<>();
             for(Role role:roleRepository.findByUsers(u))
             {
                 roleNames.add(role.getName());

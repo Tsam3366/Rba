@@ -23,13 +23,12 @@ public class Role
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(unique = true)
     private String name;
     private boolean status;
     private Date created;
     private Date updated;
-    @ManyToMany(mappedBy = "roles")
-    private List<User> users = new ArrayList<>();
+    @ManyToMany(mappedBy = "roles",fetch = FetchType.EAGER)
+    private Set<User> users = new HashSet<>();
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Permissions> permissions = new HashSet<>();

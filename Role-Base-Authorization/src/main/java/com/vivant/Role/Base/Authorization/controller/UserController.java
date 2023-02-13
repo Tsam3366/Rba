@@ -55,20 +55,20 @@ public class UserController {
 
 
     @GetMapping("/getall")
-    public ResponseEntity<List<UserRolesDto>> testing() {
+    public ResponseEntity<Set<UserRolesDto>> testing() {
         return ResponseEntity.ok(userService.getUsers());
     }
-    @PutMapping("/{mail}/{name}")
-    public User assignRole(@PathVariable String mail, @PathVariable String name) {
+    @PutMapping("/{mail}/{rolename}")
+    public ResponseEntity<User> assignRole(@PathVariable String mail, @PathVariable String rolename) {
         User user=userService.findUserByMail(mail);
-        Role role=roleService.findByName(name);
+        Role role=roleService.findByName(rolename);
         user.setUpdated(new Date(System.currentTimeMillis()));
         user.getRoles().add(role);
-        return userService.addUser(user);
-    }
+        return ResponseEntity.ok(userService.addUser(user));
+        }
 
     @GetMapping("/{rolename}")
-    public List<User> getRolesByUser(@PathVariable String rolename)
+    public Set<User> getRolesByUser(@PathVariable String rolename)
     {
         Role role=roleService.findByName(rolename);
         if(role==null)
@@ -76,7 +76,7 @@ public class UserController {
         return userService.findUsers(role);
     }
     @GetMapping("getRoles/{mail}")
-    public List<Role> getRoles(@PathVariable String mail)
+    public Set<Role> getRoles(@PathVariable String mail)
     {
         User user=userService.findUserByMail(mail);
         return roleService.findRoles(user);

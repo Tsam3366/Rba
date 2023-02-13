@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -22,5 +23,5 @@ public class UserRolesDto
     private boolean status;
     private Date userCreated;
     private Date userUpdated;
-    private Set<String> roles;
+    private List<String> roles;
 }

@@ -33,8 +33,9 @@ public class RoleService
     }
     public Role findByName(String name)
     {return roleRepository.findByName(name);}
-    public List<Role> findRoles(User user)
+    public Set<Role> findRoles(User user)
     {
+        System.out.println(roleRepository.findByUsers(user));
         return roleRepository.findByUsers(user);
     }
 }

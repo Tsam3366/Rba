@@ -28,8 +28,8 @@ public class RoleController
     private UserService userService;
 
     @GetMapping("/getall")
-    public ResponseEntity<List<Role>> getAllRoles() {
-        return ResponseEntity.ok(roleService.getRoles());
+    public List<Role> getAllRoles() {
+        return roleService.getRoles();
     }
     @PostMapping("/addrole")
     public Role addRole(@RequestBody RoleDto roledto)
@@ -42,7 +42,7 @@ public class RoleController
         return roleService.addRole(role);
     }
     @GetMapping("{username}")
-    public List<Role> getUsers(@PathVariable String username)
+    public Set<Role> getUsers(@PathVariable String username)
     {
         User user=userService.findUserByMail(username);
         if(user==null)

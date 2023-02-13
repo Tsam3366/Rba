@@ -53,7 +53,7 @@ public class AuthenticationService {
                                 authenticationRequest.getPassword())
         );
         User user = userService.findUserByMail(authenticationRequest.getEmail());
-        List<Role> roles=roleService.findRoles(user);
+        Set<Role> roles=roleService.findRoles(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
