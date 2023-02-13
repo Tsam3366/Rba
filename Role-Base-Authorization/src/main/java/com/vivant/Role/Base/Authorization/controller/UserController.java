@@ -76,7 +76,7 @@ public class UserController {
         return userService.findUsers(role);
     }
     @GetMapping("getRoles/{mail}")
-    public Set<Role> getRoles(@PathVariable String mail)
+    public List<Role> getRoles(@PathVariable String mail)
     {
         User user=userService.findUserByMail(mail);
         return roleService.findRoles(user);

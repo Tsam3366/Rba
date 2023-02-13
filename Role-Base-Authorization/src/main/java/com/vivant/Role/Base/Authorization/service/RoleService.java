@@ -6,10 +6,7 @@ import com.vivant.Role.Base.Authorization.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class RoleService
@@ -24,10 +21,10 @@ public class RoleService
     {
         return roleRepository.findAll();
     }
-    public Set<String> rolesName()
+    public List<String> rolesName()
     {
         List<Role> roles=roleRepository.findAll();
-        Set<String> roleNames=new HashSet<>();
+        List<String> roleNames=new ArrayList<>();
         for(Role r:roles)
         {
             roleNames.add(r.getName());
@@ -36,7 +33,7 @@ public class RoleService
     }
     public Role findByName(String name)
     {return roleRepository.findByName(name);}
-    public Set<Role> findRoles(User user)
+    public List<Role> findRoles(User user)
     {
         return roleRepository.findByUsers(user);
     }

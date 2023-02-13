@@ -42,7 +42,7 @@ public class RoleController
         return roleService.addRole(role);
     }
     @GetMapping("{username}")
-    public Set<Role> getUsers(@PathVariable String username)
+    public List<Role> getUsers(@PathVariable String username)
     {
         User user=userService.findUserByMail(username);
         if(user==null)

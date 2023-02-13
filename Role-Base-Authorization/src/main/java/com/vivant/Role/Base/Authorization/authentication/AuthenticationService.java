@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -52,7 +53,7 @@ public class AuthenticationService {
                                 authenticationRequest.getPassword())
         );
         User user = userService.findUserByMail(authenticationRequest.getEmail());
-        Set<Role> roles=roleService.findRoles(user);
+        List<Role> roles=roleService.findRoles(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
