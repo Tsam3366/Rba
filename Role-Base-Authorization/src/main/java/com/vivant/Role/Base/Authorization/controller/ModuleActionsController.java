@@ -16,6 +16,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/moduleactions")
+@CrossOrigin("http://localhost:3000/")
 public class ModuleActionsController
 {
     @Autowired

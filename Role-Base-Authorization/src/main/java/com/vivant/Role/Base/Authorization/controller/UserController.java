@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:3000/")
 public class UserController {
     @Autowired
     private AuthenticationService authenticationService;

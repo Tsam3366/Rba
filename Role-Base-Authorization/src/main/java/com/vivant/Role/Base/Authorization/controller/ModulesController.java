@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/modules")
+@CrossOrigin("http://localhost:3000/")
 public class ModulesController
 {
     @Autowired
